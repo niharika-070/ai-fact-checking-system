@@ -9,7 +9,7 @@ from datetime import datetime
 
 from scraper import scrape_article
 from vision_opencv import analyze_chart_opencv
-
+from vision_filter_ai import is_real_chart_ai
 
 # =============================
 # PAGE CONFIG
@@ -218,7 +218,7 @@ def run_pipeline(url):
             continue
         seen.add(img_url)
 
-        if not is_real_chart(img_url):
+        if not is_real_chart_ai(img_url):
             continue
 
         result = analyze_chart_opencv(img_url)
